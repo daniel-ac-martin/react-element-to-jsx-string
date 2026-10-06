@@ -34,7 +34,11 @@ export default (
   let attributeFormattedMultiline = `\n${spacer(lvl + 1, tabStop)}`;
   const isMultilineAttribute = formattedPropValue.includes('\n');
 
-  if (
+  if (hasValue && usedValue === undefined && !hasDefaultValue) {
+    // A prop explicitly set to undefined is the same element as one without it
+    attributeFormattedInline = '';
+    attributeFormattedMultiline = '';
+  } else if (
     useBooleanShorthandSyntax &&
     formattedPropValue === '{false}' &&
     !hasDefaultValue
