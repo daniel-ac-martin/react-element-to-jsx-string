@@ -784,6 +784,12 @@ describe('reactElementToJSXString(ReactElement)', () => {
     );
   });
 
+  it('reactElementToJSXString(<TestComponent prop={undefined} />)', () => {
+    expect(reactElementToJSXString(<TestComponent prop={undefined} />)).toEqual(
+      '<TestComponent />'
+    );
+  });
+
   it('should render default props', () => {
     expect(reactElementToJSXString(<DefaultPropsComponent />)).toEqual(
       `<DefaultPropsComponent
